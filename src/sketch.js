@@ -1,30 +1,44 @@
 let scene = "center";
 
+// ignore
+let arrowColor = 0;
+
 function setup() {
   // For ordering nodes in the DOM
-  let myCanvas = createCanvas(400, 400);
+  let myCanvas = createCanvas(500, 400);
   myCanvas.parent("canvas-parent");
 }
 
 function draw() {
   background(220);
+  // changes arrow colors
+  arrowColor = color(0, 200, 0);
 
-  //arrow positions
+  // arrow positions
   // ellipse(12, 175, 5);
   // ellipse(63, 225, 5);
-  // ellipse(388, 175, 5);
-  // ellipse(337, 225, 5);
+  // ellipse(488, 175, 5);
+  // ellipse(437, 225, 5);
 
+  // center scene
   if (scene == "center") {
+
+    // scene elements go above this
     leftArrow(50, 200, 0.5);
-    rightArrow(350, 200, 0.5);
+    rightArrow(450, 200, 0.5);
   }
 
+  // left scene
   if (scene == "left") {
-    rightArrow(350, 200, 0.5);
+
+    // scene elements go above this
+    rightArrow(450, 200, 0.5);
   }
 
+  // right scene
   if (scene == "right") {
+
+    // scene elements go above this
     leftArrow(50, 200, 0.5);
   }
 }
@@ -34,7 +48,7 @@ function leftArrow(x, y, s) {
   translate(x, y);
   scale(s);
   noStroke();
-  fill(0, 255, 0);
+  fill(arrowColor);
   rect(-25, -25, 50, 50);
   triangle(-75, 0, -25, -50, -25, 50);
   pop();
@@ -46,24 +60,29 @@ function rightArrow(x, y, s) {
   scale(s);
   rotate(PI);
   noStroke();
-  fill(0, 255, 0);
+  fill(arrowColor);
   rect(-25, -25, 50, 50);
   triangle(-75, 0, -25, -50, -25, 50);
   pop();
 }
 
 function mouseClicked() {
+  // hit box for left arrow in center scene
   if (scene == "center" && 12 < mouseX && mouseX < 63 && 175 < mouseY && mouseY < 225) {
     scene = "left";
   }
-  if (scene == "center" && 337 < mouseX && mouseX < 388 && 175 < mouseY && mouseY < 225) {
+
+  // hit box for right arrow in center scene
+  if (scene == "center" && 437 < mouseX && mouseX < 488 && 175 < mouseY && mouseY < 225) {
     scene = "right";
   }
 
-  if (scene == "left" && 337 < mouseX && mouseX < 388 && 175 < mouseY && mouseY < 225) {
+  // hit box for right arrow in left scene
+  if (scene == "left" && 437 < mouseX && mouseX < 488 && 175 < mouseY && mouseY < 225) {
     scene = "center";
   }
 
+  // hit box for left arrow in right scene
   if (scene == "right" && 12 < mouseX && mouseX < 63 && 175 < mouseY && mouseY < 225) {
     scene = "center";
   }
