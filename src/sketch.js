@@ -10,6 +10,8 @@ function setup() {
 }
 
 function draw() {
+  noCursor();
+
   background(220);
   // changes arrow colors
   arrowColor = color(0, 200, 0);
@@ -41,6 +43,8 @@ function draw() {
     // scene elements go above this
     leftArrow(50, 200, 0.5);
   }
+
+  customCursor(mouseX, mouseY);
 }
 
 function leftArrow(x, y, s) {
@@ -64,6 +68,12 @@ function rightArrow(x, y, s) {
   rect(-25, -25, 50, 50);
   triangle(-75, 0, -25, -50, -25, 50);
   pop();
+}
+
+function customCursor(x, y) {
+  // temporary cursor element
+  fill(0);
+  ellipse(x, y, 10);
 }
 
 function mouseClicked() {
