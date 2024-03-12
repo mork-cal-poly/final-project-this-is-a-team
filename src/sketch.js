@@ -154,6 +154,7 @@ function centerBg() {
 function customCursor(x, y) {
   // temporary cursor element
   push();
+  noStroke();
   fill(255, 0, 0);
   ellipse(x, y, 10);
   pop();
