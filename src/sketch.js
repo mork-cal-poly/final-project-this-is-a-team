@@ -4,7 +4,9 @@ let scene = "center";
 let arrowColorL = 0;
 let arrowColorR = 0;
 
+// center scene interaction triggers
 let tvInter = false;
+let traInter = false;
 
 function setup() {
   // For ordering nodes in the DOM
@@ -27,8 +29,17 @@ function draw() {
 
   // center scene
   if (scene == "center") {
-    let screenColor = color(0);
-    tv(200, 200, screenColor);
+    centerBg();
+
+    tv(200, 200, 0);
+
+    trash(400, 325);
+
+    ellipse(375, 287.5, 10);
+
+    ellipse(425, 362.5, 10);
+
+    ellipse(350, 312.5, 10);
 
     // scene elements go above this
     leftArrow(50, 200, 0.5);
@@ -82,7 +93,7 @@ function tv(x, y, screenColor) {
 
   // tv screen color
   if (tvInter) {
-    screenColor = color(20, 150, 200);
+    screenColor = color(20, random(100, 150), 200);
   } else {
     screenColor = color(0);
   }
@@ -100,9 +111,44 @@ function tv(x, y, screenColor) {
   rect(50, -75, 25, 150);
   rect(-50, -75, 100, 25);
   rect(-50, 50, 100, 25);
+
+  // table
+  fill(115, 65, 5);
+  rect(-100, 75, 200, 50);
+
   pop();
+}
 
+function trash(x, y) {
+  push();
+  translate(x, y);
+  noStroke();
 
+  let traColor = 200;
+  if (scene == "center" && traInter == false && 375 < mouseX && mouseX < 425 && 287.5 < mouseY && mouseY < 362.5) {
+    traColor = (230);
+  }
+  if (scene == "center" && traInter == true && 350 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
+    traColor = (230);
+  }
+
+  fill(traColor);
+  if (traInter == true) {
+    rect(-50, -12.5, 75, 50);
+  } else {
+    rect(-25, -37.5, 50, 75);
+  }
+
+  pop();
+}
+
+function centerBg() {
+  push();
+  background(140, 234, 237);
+  noStroke();
+  fill(255, 245, 166);
+  rect(0, 310, width, height);
+  pop();
 }
 
 function customCursor(x, y) {
@@ -161,6 +207,14 @@ function mouseClicked() {
   // hit box for tv
   if (scene == "center" && 125 < mouseX && mouseX < 275 && 125 < mouseY && mouseY < 275) {
     tvInter = !tvInter;
+  }
+
+  // hit box for trash can
+  if (scene == "center" && traInter == false && 375 < mouseX && mouseX < 425 && 287.5 < mouseY && mouseY < 362.5) {
+    traInter = true;
+  }
+  if (scene == "center" && traInter == true && 350 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
+    traInter = false;
   }
 }
 
