@@ -4,6 +4,8 @@ let scene = "center";
 let arrowColorL = 0;
 let arrowColorR = 0;
 
+let tvInter = false;
+
 function setup() {
   // For ordering nodes in the DOM
   let myCanvas = createCanvas(500, 400);
@@ -25,6 +27,8 @@ function draw() {
 
   // center scene
   if (scene == "center") {
+    let screenColor = color(0);
+    tv(200, 200, screenColor);
 
     // scene elements go above this
     leftArrow(50, 200, 0.5);
@@ -71,10 +75,42 @@ function rightArrow(x, y, s) {
   pop();
 }
 
+function tv(x, y, screenColor) {
+  push();
+  noStroke();
+  translate(x, y)
+
+  // tv screen color
+  if (tvInter) {
+    screenColor = color(20, 150, 200);
+  } else {
+    screenColor = color(0);
+  }
+  fill(screenColor)
+  rect(-75, -75, 150);
+
+  // tv frame
+  if (scene == "center" && 125 < mouseX && mouseX < 275 && 125 < mouseY && mouseY < 275) {
+    frameColor = 75;
+  } else {
+    frameColor = 50;
+  }
+  fill(frameColor);
+  rect(-75, -75, 25, 150);
+  rect(50, -75, 25, 150);
+  rect(-50, -75, 100, 25);
+  rect(-50, 50, 100, 25);
+  pop();
+
+
+}
+
 function customCursor(x, y) {
   // temporary cursor element
-  fill(0);
+  push();
+  fill(255, 0, 0);
   ellipse(x, y, 10);
+  pop();
 }
 
 function arrowHighlight() {
@@ -120,6 +156,11 @@ function mouseClicked() {
   // hit box for left arrow in right scene
   if (scene == "right" && 12 < mouseX && mouseX < 63 && 175 < mouseY && mouseY < 225) {
     scene = "center";
+  }
+
+  // hit box for tv
+  if (scene == "center" && 125 < mouseX && mouseX < 275 && 125 < mouseY && mouseY < 275) {
+    tvInter = !tvInter;
   }
 }
 
