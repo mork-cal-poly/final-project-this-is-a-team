@@ -73,7 +73,8 @@ function rightArrow(x, y, s) {
 
 function customCursor(x, y) {
   // temporary cursor element
-  fill(0);
+  noStroke();
+  fill(255, 0, 0);
   ellipse(x, y, 10);
 }
 
