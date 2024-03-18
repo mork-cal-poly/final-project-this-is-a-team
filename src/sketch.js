@@ -27,7 +27,7 @@ function setup() {
 function draw() {
   noCursor();
 
-  background(135, 148, 115);
+  background(220);
 
   // arrow positions
   // ellipse(12, 175, 5);
@@ -47,6 +47,7 @@ function draw() {
 
   // left scene
   if (scene == "left") {
+    background(135, 148, 115);
      // Draw desk surface
      fill(139, 69, 19); // Brown color for the desk surface
      rect(200, 250, 250, 25);
