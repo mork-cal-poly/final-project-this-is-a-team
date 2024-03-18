@@ -151,13 +151,15 @@ function bed(x, y){
   rect(-250, 0, 50, 200);
   rect(25, 50, 50, 150);
   
+  // middle of bed
   fill(120);
-  rect(-200, 75, 225, 100);
+  rect(-200, 75, 225, 100); 
   fill(255);
   rect(-150, 75, 25, 100);
   fill(255, 0, 0);
   rect(-125, 75, 150, 100);
   
+  // pillow
   fill(50);
   ellipse(-160, 60, 75, 25);
   
@@ -172,6 +174,13 @@ function lamp(x, y){
   noStroke();
   translate(x, y);
 
+  fill(100, 88, 69);
+  rect(125, 185, 100, 15);
+  fill(130, 111, 81);
+  rect(167,-50, 15, 235);
+  fill(247, 244, 185);
+  quad(150, -115, 200, -115, 225, -50, 125, -50);
+  
   pop();
 }
 function door(x, y){
