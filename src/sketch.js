@@ -1,8 +1,7 @@
 let scene = "center";
 
-// ignore
-let arrowColorL = 0;
-let arrowColorR = 0;
+let arrowColorL;
+let arrowColorR;
 
 function setup() {
   // For ordering nodes in the DOM
