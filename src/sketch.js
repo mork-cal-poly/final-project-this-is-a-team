@@ -4,6 +4,10 @@ let scene = "center";
 let arrowColorL;
 let arrowColorR;
 
+//right scene interaction triggers
+let lampOn = true; 
+let roomBrightness = 150; 
+
 function setup() {
   // For ordering nodes in the DOM
   let myCanvas = createCanvas(500, 400);
@@ -49,6 +53,7 @@ function draw() {
 
     door(250, 200);
 
+    drawRoomBrightness();
 
     // scene elements go above this
     leftArrow(50, 200, 0.5);
@@ -131,6 +136,21 @@ function mouseClicked() {
   if (scene == "right" && 12 < mouseX && mouseX < 63 && 175 < mouseY && mouseY < 225) {
     scene = "center";
   }
+
+  // lamp click, room brighter
+  let lampX = 250 + 150;
+  let lampY = 200 - 115;
+  let lampWidth = 225 - 125;
+  let lampHeight = -50 - (-115);
+  if (
+    mouseX >= lampX &&
+    mouseX <= lampX + lampWidth &&
+    mouseY >= lampY &&
+    mouseY <= lampY + lampHeight
+  ) {
+    lampOn = !lampOn; // Toggle the lamp state
+    roomBrightness = lampOn ? 255 : 150; // Update room brightness
+  }
 }
 
 function rightBg(){
@@ -170,15 +190,17 @@ function bed(x, y){
 
 function lamp(x, y){
   push();
-
   noStroke();
   translate(x, y);
 
   fill(100, 88, 69);
   rect(125, 185, 100, 15);
-  fill(130, 111, 81);
-  rect(167,-50, 15, 235);
-  fill(247, 244, 185);
+  fill(185, 144, 109);
+  rect(167, -50, 15, 235);
+  
+  //lamp head
+  let lampColor = lampOn ? color(247, 244, 185) : color(144, 118, 97);
+  fill(lampColor);
   quad(150, -115, 200, -115, 225, -50, 125, -50);
 
   pop();
@@ -201,3 +223,9 @@ function door(x, y){
   pop();
 }
 
+function drawRoomBrightness() {
+  push();
+  fill(0, 0, 0, 255 - roomBrightness); // Semi-transparent black rectangle
+  rect(0, 0, width, height);
+  pop();
+}
