@@ -3,6 +3,10 @@ let scene = "center";
 let arrowColorL;
 let arrowColorR;
 
+// center scene interaction triggers
+let tvInter = false;
+let traInter = false;
+
 function setup() {
   // For ordering nodes in the DOM
   let myCanvas = createCanvas(500, 400);
@@ -24,6 +28,17 @@ function draw() {
 
   // center scene
   if (scene == "center") {
+    centerBg();
+
+    tv(200, 200, 0);
+
+    trash(400, 325);
+
+    // ellipse(375, 287.5, 10);
+
+    // ellipse(425, 362.5, 10);
+
+    // ellipse(350, 312.5, 10);
 
     // scene elements go above this
     leftArrow(50, 200, 0.5);
@@ -72,9 +87,11 @@ function rightArrow(x, y, s) {
 
 function customCursor(x, y) {
   // temporary cursor element
+  push();
   noStroke();
   fill(255, 0, 0);
   ellipse(x, y, 10);
+  pop();
 }
 
 function arrowHighlight() {
@@ -121,6 +138,92 @@ function mouseClicked() {
   if (scene == "right" && 12 < mouseX && mouseX < 63 && 175 < mouseY && mouseY < 225) {
     scene = "center";
   }
+
+  // hit box for tv
+  if (scene == "center" && 125 < mouseX && mouseX < 275 && 125 < mouseY && mouseY < 275) {
+    tvInter = !tvInter;
+  }
+
+  // hit box for trash can
+  if (scene == "center" && traInter == false && 375 < mouseX && mouseX < 425 && 287.5 < mouseY && mouseY < 362.5) {
+    traInter = true;
+  }
+  if (scene == "center" && traInter == true && 320 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
+    traInter = false;
+  }
 }
 
+function tv(x, y, screenColor) {
+  push();
+  noStroke();
+  translate(x, y)
 
+  // tv screen color
+  if (tvInter) {
+    screenColor = color(20, random(100, 150), 200);
+  } else {
+    screenColor = color(0);
+  }
+  fill(screenColor)
+  rect(-75, -75, 150);
+
+  // tv frame
+  if (scene == "center" && 125 < mouseX && mouseX < 275 && 125 < mouseY && mouseY < 275) {
+    frameColor = 75;
+  } else {
+    frameColor = 50;
+  }
+  fill(frameColor);
+  rect(-75, -75, 25, 150);
+  rect(50, -75, 25, 150);
+  rect(-50, -75, 100, 25);
+  rect(-50, 50, 100, 25);
+
+  // table
+  fill(115, 65, 5);
+  rect(-100, 75, 200, 50);
+
+  pop();
+}
+
+function trash(x, y) {
+  push();
+  translate(x, y);
+  noStroke();
+
+  let traColor = 200;
+  let garbaColor1 = color(181, 75, 40);
+  let garbaColor2 = color(40, 181, 120);
+  if (scene == "center" && traInter == false && 375 < mouseX && mouseX < 425 && 287.5 < mouseY && mouseY < 362.5) {
+    traColor = (230);
+  }
+  if (scene == "center" && traInter == true && 320 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
+    traColor = (230);
+    garbaColor1 = color(222, 95, 53);
+    garbaColor2 = color(58, 240, 161);
+  }
+
+
+  if (traInter == true) {
+    fill(traColor);
+    rect(-50, -12.5, 75, 50);
+    fill(garbaColor1)
+    rect(-75, 0, 10, 5);
+    fill(garbaColor2)
+    rect(-80, 10, 20, 15);
+  } else {
+    fill(traColor);
+    rect(-25, -37.5, 50, 75);
+  }
+
+  pop();
+}
+
+function centerBg() {
+  push();
+  background(170, 255, 168);
+  noStroke();
+  fill(131, 105, 83);
+  rect(0, 310, width, height);
+  pop();
+}
