@@ -43,12 +43,12 @@ function draw() {
   
     rightBg();
 
-    bed(0,0);
+    bed(250, 200);
 
     lamp(0,0);
 
     door(0,0);
-    }
+
 
     // scene elements go above this
     leftArrow(50, 200, 0.5);
@@ -139,7 +139,6 @@ function rightBG(){
   noStroke();
   fill(131, 105, 83);
   rect(0, 310, width, height)
-  translate(x, y);
   pop();
 }
 
@@ -147,6 +146,22 @@ function bed(x, y){
   push();
   noStroke();
   translate(x, y);
+  
+  fill(84, 78, 70);
+  rect(-250, 0, 50, 200);
+  rect(25, 50, 50, 150);
+  
+  fill(120);
+  rect(-200, 75, 225, 100);
+  fill(255);
+  rect(-150, 75, 25, 100);
+  fill(255, 0, 0);
+  rect(-125, 75, 150, 100);
+  
+  fill(50);
+  ellipse(-160, 60, 75, 25);
+  
+  pop();
   
 }
 
