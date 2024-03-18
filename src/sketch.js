@@ -185,9 +185,18 @@ function lamp(x, y){
 }
 function door(x, y){
   push();
-
   noStroke();
   translate(x, y);
+  
+  fill(189, 144, 151);
+  rect(-115, -100, 130, 175);
+  fill(223, 193, 198);
+  rect(-100, -80, 100, 75);
+  fill(223, 193, 198);
+  rect(-100, 15, 100, 60);
+  
+  fill(163, 97, 36);
+  ellipse(2, 5, 15, 15);
   
   pop();
 }
