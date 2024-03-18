@@ -40,6 +40,15 @@ function draw() {
 
   // right scene
   if (scene == "right") {
+  
+    rightBg();
+
+    bed(0,0);
+
+    lamp(0,0);
+
+    door(0,0);
+    }
 
     // scene elements go above this
     leftArrow(50, 200, 0.5);
@@ -124,4 +133,34 @@ function mouseClicked() {
   }
 }
 
+function rightBG(){
+  push();
+  background(210, 180, 140);
+  noStroke();
+  fill(131, 105, 83);
+  rect(0, 310, width, height)
+  translate(x, y);
+  pop();
+}
+
+function bed(x, y){
+  push();
+  noStroke();
+  translate(x, y);
+  
+}
+
+
+function lamp(x, y){
+  push();
+  noStroke();
+  translate(x, y);
+  
+}
+function door(x, y){
+  push();
+  noStroke();
+  translate(x, y);
+  
+}
 
