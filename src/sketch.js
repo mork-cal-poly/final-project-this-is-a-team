@@ -211,9 +211,9 @@ function trash(x, y) {
 
 function centerBg() {
   push();
-  background(140, 234, 237);
+  background(170, 255, 168);
   noStroke();
-  fill(255, 245, 166);
+  fill(131, 105, 83);
   rect(0, 310, width, height);
   pop();
 }
