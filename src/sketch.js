@@ -5,7 +5,7 @@ let arrowColorL;
 let arrowColorR;
 
 //right scene interaction triggers
-let lampOn = true; 
+let lampOn = false; 
 let roomBrightness = 150; 
 let pillowHeight = 25;
 let doorOpen = false;
