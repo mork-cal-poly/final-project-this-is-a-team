@@ -45,9 +45,9 @@ function draw() {
 
     bed(250, 200);
 
-    lamp(0,0);
+    lamp(250, 200);
 
-    door(0,0);
+    door(250, 200);
 
 
     // scene elements go above this
@@ -180,7 +180,7 @@ function lamp(x, y){
   rect(167,-50, 15, 235);
   fill(247, 244, 185);
   quad(150, -115, 200, -115, 225, -50, 125, -50);
-  
+
   pop();
 }
 function door(x, y){
