@@ -93,62 +93,6 @@ function draw() {
        // Draw cactus and pot
        drawCactusAndPot();
 
-       // Draw clock on the wall
-function drawClock() {
-  let clockX = 120; // Move clock to the right
-  let clockY = 100; // Moved the clock up
-  let clockSize = 100;
-  
-  // Clock face
-  fill(255);
-  ellipse(clockX, clockY, clockSize, clockSize);
-
-  // Hour markers
-  stroke(0);
-  strokeWeight(4);
-  for (let i = 0; i < 12; i++) {
-    let angle = map(i, 0, 12, 0, TWO_PI);
-    let x1 = clockX + cos(angle) * (clockSize / 2 - 10);
-    let y1 = clockY + sin(angle) * (clockSize / 2 - 10);
-    let x2 = clockX + cos(angle) * (clockSize / 2 - 20);
-    let y2 = clockY + sin(angle) * (clockSize / 2 - 20);
-    line(x1, y1, x2, y2);
-  }
-
-  // Hands of the clock
-  let h = hour();
-  let m = minute();
-  let s = second();
-
-  // Hour hand
-  strokeWeight(6);
-  line(clockX, clockY, clockX + cos(map(h % 12 + m / 60, 0, 12, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 4), clockY + sin(map(h % 12 + m / 60, 0, 12, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 4));
-
-   // Minute hand
-   strokeWeight(4);
-   line(clockX, clockY, clockX + cos(map(m + s / 60, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.5), clockY + sin(map(m + s / 60, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.5));
- 
-   // Second hand (black)
-   stroke(0); // Black color for the seconds hand
-   strokeWeight(2);
-   line(clockX, clockY, clockX + cos(map(s, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.2), clockY + sin(map(s, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.2));
- }
- 
- // Draw cactus and pot
- function drawCactusAndPot() {
-   // Draw cactus
-   fill(50); // Dark green color for the cactus
-   ellipse(95, 295, cactusWidth, cactusHeight); // Cactus body
-   ellipse(95, 300, cactusWidth, cactusHeight / 2); // Cactus arm 1
- 
-   // Draw trunk connecting cactus to the pot
-   fill(139, 69, 19); // Brown color for the trunk
-   rect(90, 320, trunkWidth, trunkHeight); 
-   // Draw pot
-   fill(139, 69, 19); // Brown color for the pot
-   rect(60, 330, potWidth, potHeight); // Pot
- }
-
     // scene elements go above this
     rightArrow(450, 200, 0.5);
   }
@@ -265,3 +209,59 @@ function mouseClicked() {
     }
   }
 } 
+
+// Draw clock on the wall
+function drawClock() {
+let clockX = 120; // Move clock to the right
+let clockY = 100; // Moved the clock up
+let clockSize = 100;
+
+// Clock face
+fill(255);
+ellipse(clockX, clockY, clockSize, clockSize);
+
+// Hour markers
+stroke(0);
+strokeWeight(4);
+for (let i = 0; i < 12; i++) {
+  let angle = map(i, 0, 12, 0, TWO_PI);
+  let x1 = clockX + cos(angle) * (clockSize / 2 - 10);
+  let y1 = clockY + sin(angle) * (clockSize / 2 - 10);
+  let x2 = clockX + cos(angle) * (clockSize / 2 - 20);
+  let y2 = clockY + sin(angle) * (clockSize / 2 - 20);
+  line(x1, y1, x2, y2);
+}
+
+// Hands of the clock
+let h = hour();
+let m = minute();
+let s = second();
+
+// Hour hand
+strokeWeight(6);
+line(clockX, clockY, clockX + cos(map(h % 12 + m / 60, 0, 12, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 4), clockY + sin(map(h % 12 + m / 60, 0, 12, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 4));
+
+  // Minute hand
+  strokeWeight(4);
+  line(clockX, clockY, clockX + cos(map(m + s / 60, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.5), clockY + sin(map(m + s / 60, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.5));
+
+  // Second hand (black)
+  stroke(0); // Black color for the seconds hand
+  strokeWeight(2);
+  line(clockX, clockY, clockX + cos(map(s, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.2), clockY + sin(map(s, 0, 60, -HALF_PI, TWO_PI - HALF_PI)) * (clockSize / 2.2));
+}
+
+// Draw cactus and pot
+function drawCactusAndPot() {
+  // Draw cactus
+  fill(50); // Dark green color for the cactus
+  ellipse(95, 295, cactusWidth, cactusHeight); // Cactus body
+  ellipse(95, 300, cactusWidth, cactusHeight / 2); // Cactus arm 1
+
+  // Draw trunk connecting cactus to the pot
+  fill(139, 69, 19); // Brown color for the trunk
+  rect(90, 320, trunkWidth, trunkHeight); 
+  // Draw pot
+  fill(139, 69, 19); // Brown color for the pot
+  rect(60, 330, potWidth, potHeight); // Pot
+}
