@@ -148,7 +148,7 @@ function mouseClicked() {
   if (scene == "center" && traInter == false && 375 < mouseX && mouseX < 425 && 287.5 < mouseY && mouseY < 362.5) {
     traInter = true;
   }
-  if (scene == "center" && traInter == true && 350 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
+  if (scene == "center" && traInter == true && 320 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
     traInter = false;
   }
 }
@@ -192,17 +192,27 @@ function trash(x, y) {
   noStroke();
 
   let traColor = 200;
+  let garbaColor1 = color(181, 75, 40);
+  let garbaColor2 = color(40, 181, 120);
   if (scene == "center" && traInter == false && 375 < mouseX && mouseX < 425 && 287.5 < mouseY && mouseY < 362.5) {
     traColor = (230);
   }
-  if (scene == "center" && traInter == true && 350 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
+  if (scene == "center" && traInter == true && 320 < mouseX && mouseX < 425 && 312.5 < mouseY && mouseY < 362.5) {
     traColor = (230);
+    garbaColor1 = color(222, 95, 53);
+    garbaColor2 = color(58, 240, 161);
   }
 
-  fill(traColor);
+
   if (traInter == true) {
+    fill(traColor);
     rect(-50, -12.5, 75, 50);
+    fill(garbaColor1)
+    rect(-75, 0, 10, 5);
+    fill(garbaColor2)
+    rect(-80, 10, 20, 15);
   } else {
+    fill(traColor);
     rect(-25, -37.5, 50, 75);
   }
 
