@@ -8,6 +8,7 @@ let arrowColorR;
 let lampOn = true; 
 let roomBrightness = 150; 
 let pillowHeight = 25;
+let doorOpen = false;
 
 function setup() {
   // For ordering nodes in the DOM
@@ -152,7 +153,7 @@ function mouseClicked() {
     lampOn = !lampOn; // Toggle the lamp state
     roomBrightness = lampOn ? 255 : 150; // Update room brightness
   }
-  
+
   let pillowX = 250 - 160;
   let pillowY = 200 + 70;
   let pillowWidth = 75;
@@ -164,6 +165,13 @@ function mouseClicked() {
     mouseY <= pillowY + pillowHeight / 2
   ) {
     pillowHeight = pillowHeight === 25 ? 37.5 : 25; // Toggles pillow height
+  }
+  let doorKnobX = 250 + 2;
+  let doorKnobY = 200 + 5;
+  let doorKnobRadius = 15 / 2;
+
+  if (dist(mouseX, mouseY, doorKnobX, doorKnobY) <= doorKnobRadius) {
+    doorOpen = !doorOpen; // Toggle the door state
   }
 }
 
@@ -224,16 +232,41 @@ function door(x, y){
   noStroke();
   translate(x, y);
   
-  fill(189, 144, 151);
-  rect(-115, -100, 130, 175);
-  fill(223, 193, 198);
-  rect(-100, -80, 100, 75);
-  fill(223, 193, 198);
-  rect(-100, 15, 100, 60);
-  
-  fill(163, 97, 36);
-  ellipse(2, 5, 15, 15);
-  
+  if (doorOpen) {
+    // open door with bear
+    fill(150); // Gray color for the door
+    rect(-115, -100, 130, 175);
+    fill(150); // Gray color for the door panels
+    rect(-100, -80, 100, 75);
+    rect(-100, 15, 100, 60);
+
+    // bear
+    fill(148, 118, 97); 
+    ellipse(-50, 5+35, 50, 65); // Body
+    ellipse(-75, -60+35, 25, 25); // left ear
+    ellipse(-25, -60+35, 25, 25); // right ear
+    ellipse(-50, -40+35, 50, 50); // Head
+    ellipse(-65, 65, 40, 20);// left leg
+    ellipse(-35, 65, 40, 20);// right leg
+    
+    
+    //door knob
+    fill(160); // Gray color for the door knob
+    ellipse(2, 5, 15, 15);
+  } else {
+    // Draw the closed door
+    fill(189, 144, 151);
+    rect(-115, -100, 130, 175);
+    fill(223, 193, 198);
+    rect(-100, -80, 100, 75);
+    fill(223, 193, 198);
+    rect(-100, 15, 100, 60);
+
+    //door knob
+    fill(163, 97, 36);
+    ellipse(2, 5, 15, 15);
+  }
+
   pop();
 }
 
