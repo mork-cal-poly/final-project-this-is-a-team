@@ -7,6 +7,7 @@ let arrowColorR;
 //right scene interaction triggers
 let lampOn = true; 
 let roomBrightness = 150; 
+let pillowHeight = 25;
 
 function setup() {
   // For ordering nodes in the DOM
@@ -151,6 +152,19 @@ function mouseClicked() {
     lampOn = !lampOn; // Toggle the lamp state
     roomBrightness = lampOn ? 255 : 150; // Update room brightness
   }
+  
+  let pillowX = 250 - 160;
+  let pillowY = 200 + 70;
+  let pillowWidth = 75;
+
+  if (
+    mouseX >= pillowX &&
+    mouseX <= pillowX + pillowWidth &&
+    mouseY >= pillowY - pillowHeight / 2 &&
+    mouseY <= pillowY + pillowHeight / 2
+  ) {
+    pillowHeight = pillowHeight === 25 ? 37.5 : 25; // Toggles pillow height
+  }
 }
 
 function rightBg(){
@@ -173,7 +187,7 @@ function bed(x, y){
   
   // pillow
   fill(100, 100, 200);
-  ellipse(-160, 70, 75, 25);
+  ellipse(-160, 70, 75, pillowHeight);
   
   // middle of bed
   fill(120);
