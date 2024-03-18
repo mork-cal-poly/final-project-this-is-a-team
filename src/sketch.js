@@ -171,18 +171,18 @@ function bed(x, y){
   rect(-250, 0, 50, 200);
   rect(25, 50, 50, 150);
   
+  // pillow
+  fill(100, 100, 200);
+  ellipse(-160, 70, 75, 25);
+  
   // middle of bed
   fill(120);
-  rect(-200, 75, 225, 100); 
+  rect(-200, 75, 225, 100);
   fill(255);
   rect(-150, 75, 25, 100);
   fill(255, 0, 0);
   rect(-125, 75, 150, 100);
-  
-  // pillow
-  fill(50);
-  ellipse(-160, 60, 75, 25);
-  
+
   pop();
   
 }
