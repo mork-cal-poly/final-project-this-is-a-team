@@ -133,7 +133,7 @@ function mouseClicked() {
   }
 }
 
-function rightBG(){
+function rightBg(){
   push();
   background(210, 180, 140);
   noStroke();
@@ -168,14 +168,18 @@ function bed(x, y){
 
 function lamp(x, y){
   push();
+
   noStroke();
   translate(x, y);
-  
+
+  pop();
 }
 function door(x, y){
   push();
+
   noStroke();
   translate(x, y);
   
+  pop();
 }
 
