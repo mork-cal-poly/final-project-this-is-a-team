@@ -179,8 +179,23 @@ function rightBg(){
   push();
   background(186, 193, 209);
   noStroke();
+  
+  // pattern on the background
+  fill(151, 168, 181); 
+  let xPos = 0;
+  let yPos = 0;
+  while (xPos < width) {
+    while (yPos < height) {
+      ellipse(xPos, yPos, 15, 15);
+      yPos += 30;
+    }
+    xPos += 30;
+    yPos = 0;
+  }
+  
   fill(142, 152, 83);
-  rect(0, 310, width, height)
+  rect(0, 310, width, height);
+  
   pop();
 }
 
