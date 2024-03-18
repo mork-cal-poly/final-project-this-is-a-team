@@ -135,9 +135,9 @@ function mouseClicked() {
 
 function rightBg(){
   push();
-  background(210, 180, 140);
+  background(186, 193, 209);
   noStroke();
-  fill(131, 105, 83);
+  fill(142, 152, 83);
   rect(0, 310, width, height)
   pop();
 }
